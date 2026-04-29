@@ -43,6 +43,24 @@ const connectToDatabase = async () => {
 
 connectToDatabase()
   .then(() => {
+    app.get("/test-db", async (req, res) => {
+      try {
+        const status = mongoose.connection.readyState;
+
+        res.json({
+          message: "Database connection is working",
+          status: status === 1 ? "connected" : "not connected",
+        });
+      } catch (error) {
+        res.status(500).json({
+          message: "Error checking DB",
+          error: error.message,
+        });
+      }
+    });
+
+    console.log("Routes loaded");
+
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
