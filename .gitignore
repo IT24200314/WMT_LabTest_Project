@@ -1,4 +1,4 @@
-/backend-dev.err.log
-/backend-dev.log
-/frontend-dev.err.log
-/frontend-dev.log
+node_modules/
+.env
+dist/
+*.log
